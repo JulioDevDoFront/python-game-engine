@@ -1,34 +1,30 @@
+import json
+import pygame 
 
-
-#tileset structure 
-#width: 32
-#height: 32
-#zIndex = 1
-#visible = True
-#layers = {
-#"background": 
-#{
-#"size": [32,32],
-#"visible": True,
-#"tiles": [[1,1,1,1,1,1],[1,1,1,1,2,2], [1,1,1,2,2,1,2]]
-#}
-#}
-#tilesProperties = {
-#"sprites":
-#{
-#"1": "grass.png"
-#"2": "rocks.png"
-#"3": "tree.png"
-#"0": "void.png"
-#},
-#"properties": 
-#{
-#"1": {"collision": True, "evil": True, "slow": True}
-#}
-#}
 class Tilemap:
-    def __init__(self, position, size, tiles, tilesProperties):
-        pass
+    def __init__(self, file, name, position):
+        try:
+            with open(file) as loadFile:
+                mapFile = json.load(loadFile)
+        except FileNotFoundError:
+            print("Map file was not found!")
+        except json.JSONDecodeError:
+            print("Invalid json map file, check that!")
+        else:
+            print("Sucess opening json map file!")
+        
+        if not name in mapFile:
+            print(f"Map {name} was not found!")
+            return
+    
+        
+        self.map = mapFile[name] 
+        self.name = name
+        self.position = position
+        self.zIndex = self.map["zIndex"]
+        self.size = self.map["size"]
+        self.visible = self.map["visible"]
+        
 
     def render(self):
         pass

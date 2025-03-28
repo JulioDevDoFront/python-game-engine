@@ -1,4 +1,5 @@
 import pygame 
+from tilemap import Tilemap
 import menu
 import game
 import importlib
@@ -15,6 +16,7 @@ def init():
     settingsS = scenes.create("settings", "settingsScene")
     library.events.addEventListener("onUIElementCreate", onUIElementCreate)
     scenes.getScene("menu").load()
+    gameMap = Tilemap("map.json", "mainMap", [0,0])
 
 def onUIElementCreate(*E):
     print("testing UIELements creation")
