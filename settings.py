@@ -7,7 +7,7 @@ import library
 
 game = pygame.init()
 
-screen = pygame.display.set_mode((400, 400))
+screen = pygame.display.set_mode((400, 400),pygame.RESIZABLE)
 eventsList = []
 evs = []
 RUNNING = True

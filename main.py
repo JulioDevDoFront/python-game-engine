@@ -11,12 +11,12 @@ import library
 import UIManager
 #main setup
 def init():
+    global tile
     menuScene = scenes.create("menu", "menu")
     gameScene = scenes.create("game", "game")
     settingsS = scenes.create("settings", "settingsScene")
     library.events.addEventListener("onUIElementCreate", onUIElementCreate)
     scenes.getScene("menu").load()
-    gameMap = Tilemap("map.json", "mainMap", [0,0])
 
 def onUIElementCreate(*E):
     print("testing UIELements creation")
@@ -36,6 +36,7 @@ init()
 
 while settings.RUNNING:
     mainPipeline()
+    
     pygame.display.update()
     
 
